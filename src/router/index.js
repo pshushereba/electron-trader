@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Dashboard from "../views/Dashboard.vue";
 import Exchanges from "../views/Exchanges.vue";
+import Settings from "../views/Settings.vue";
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: "/exchanges",
     name: "Exchanges",
     component: Exchanges,
+  },
+  {
+    path: "/settings",
+    name: "Settings",
+    component: Settings,
   },
   {
     path: "/about",

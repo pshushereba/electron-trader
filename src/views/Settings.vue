@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Dashboard</h1>
+    <h1>Settings</h1>
   </div>
 </template>
 
@@ -8,4 +8,4 @@
 export default {};
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped></style>
