@@ -1,10 +1,26 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <nav-bar />
+  <div class="flex">
+    <side-nav />
+    <div class="container">
+      <main class="flex-grow">
+        <router-view />
+      </main>
+    </div>
   </div>
-  <router-view />
 </template>
+
+<script>
+import NavBar from "@/components/NavBar";
+import SideNav from "@/components/SideNav";
+
+export default {
+  components: {
+    NavBar,
+    SideNav,
+  },
+};
+</script>
 
 <style>
 #app {
