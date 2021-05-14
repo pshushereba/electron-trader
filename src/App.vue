@@ -4,6 +4,7 @@
     <side-nav />
     <div class="container">
       <main class="flex-grow">
+        <Login />
         <router-view />
       </main>
     </div>
@@ -13,12 +14,14 @@
 <script>
 import NavBar from "@/components/NavBar";
 import SideNav from "@/components/SideNav";
+import Login from "@/components/auth/Login";
 import { initJsStore } from "./service/idbService";
 
 export default {
   components: {
     NavBar,
     SideNav,
+    Login,
   },
   async beforeCreate() {
     try {
