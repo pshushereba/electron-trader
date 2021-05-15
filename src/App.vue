@@ -15,26 +15,12 @@
 import NavBar from "@/components/NavBar";
 import SideNav from "@/components/SideNav";
 import Login from "@/components/auth/Login";
-import { initJsStore } from "./service/idbService";
 
 export default {
   components: {
     NavBar,
     SideNav,
     Login,
-  },
-  async beforeCreate() {
-    try {
-      const isDbCreated = await initJsStore();
-      if (isDbCreated) {
-        console.log("db created");
-      } else {
-        console.log("db opened");
-      }
-    } catch (ex) {
-      console.error(ex);
-      alert(ex.message);
-    }
   },
 };
 </script>

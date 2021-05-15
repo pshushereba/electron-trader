@@ -22,11 +22,17 @@ const routes = [
     path: "/exchanges",
     name: "Exchanges",
     component: Exchanges,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: "/settings",
     name: "Settings",
     component: Settings,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: "/about",
@@ -42,6 +48,18 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (this.store.getters.isLoggedIn) {
+      next();
+      return;
+    }
+    next("/login");
+  } else {
+    next();
+  }
 });
 
 export default router;
