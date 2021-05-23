@@ -3,7 +3,7 @@
     <form class="login" @submit.prevent="login">
       <h1>Sign in</h1>
       <label>Email</label>
-      <input required v-model="email" type="email" placeholder="Name" />
+      <input required v-model="username" type="text" placeholder="Name" />
       <label>Password</label>
       <input
         required
@@ -21,16 +21,16 @@
 export default {
   data() {
     return {
-      email: "",
+      username: "",
       password: "",
     };
   },
   methods: {
     login: function () {
-      let email = this.email;
+      let username = this.username;
       let password = this.password;
       this.$store
-        .dispatch("login", { email, password })
+        .dispatch("login", { username, password })
         .then(() => this.$router.push("/"))
         .catch((err) => console.log(err));
     },
