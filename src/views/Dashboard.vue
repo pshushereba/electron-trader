@@ -5,7 +5,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  mounted() {
+    console.log(this.$store.state.user);
+  },
+};
 </script>
 
 <style scoped></style>

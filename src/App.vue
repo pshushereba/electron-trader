@@ -4,7 +4,7 @@
     <side-nav />
     <div class="container">
       <main class="flex-grow">
-        <Login />
+        <Login v-if="!isLoggedIn" />
         <router-view />
       </main>
     </div>
@@ -15,12 +15,16 @@
 import NavBar from "@/components/NavBar";
 import SideNav from "@/components/SideNav";
 import Login from "@/components/auth/Login";
+import { mapGetters } from 'vuex';
 
 export default {
   components: {
     NavBar,
     SideNav,
     Login,
+  },
+  computed: {
+    ...mapGetters(["isLoggedIn"]),
   },
 };
 </script>

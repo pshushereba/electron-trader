@@ -7,5 +7,9 @@ import "./assets/tailwind.css";
 
 // Vue.prototype.$axios = axios;
 
-createApp(App).use(store).use(router).mount("#app");
-// app.config.globalProperties.$axios = axios;
+const app = createApp(App);
+app.use(store);
+app.use(router);
+app.mount("#app");
+console.log(app);
+app.config.globalProperties.$store = store;

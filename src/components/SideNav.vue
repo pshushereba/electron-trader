@@ -20,7 +20,14 @@
 </template>
 
 <script>
-export default {};
+import { mapGetters, mapState } from "vuex";
+export default {
+  name: "SideNav",
+  computed: {
+    ...mapGetters(["isLoggedIn"]),
+    ...mapState(),
+  },
+};
 </script>
 
 <style scoped>

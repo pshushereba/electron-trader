@@ -3,6 +3,7 @@ import Home from "../views/Home.vue";
 import Dashboard from "../views/Dashboard.vue";
 import Exchanges from "../views/Exchanges.vue";
 import Settings from "../views/Settings.vue";
+import store from "../store";
 
 const routes = [
   {
@@ -52,7 +53,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (this.store.getters.isLoggedIn) {
+    if (store.getters.isLoggedIn) {
       next();
       return;
     }
