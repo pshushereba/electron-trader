@@ -6,9 +6,7 @@
 
 <script>
 export default {
-  mounted() {
-    console.log(this.$store.state.user);
-  },
+  name: "Dashboard",
 };
 </script>
 

@@ -1,4 +1,4 @@
-import { createStore } from "vuex";
+import { createStore, createLogger } from "vuex";
 import axios from "axios";
 
 const store = createStore({
@@ -85,8 +85,10 @@ const store = createStore({
   getters: {
     isLoggedIn: (state) => !!state.token,
     authStatus: (state) => state.status,
+    userDetails: (state) => state.user,
   },
   modules: {},
+  plugins: [createLogger()],
 });
 
 export default store;

@@ -25,7 +25,7 @@ export default {
   name: "SideNav",
   computed: {
     ...mapGetters(["isLoggedIn"]),
-    ...mapState(),
+    ...mapState(["user"])
   },
 };
 </script>

@@ -6,14 +6,15 @@
 </template>
 
 <script>
-// import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 // @ is an alias to /src
 // import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
   name: "Home",
-  // computed: {
-  //   ...mapState({}),
-  // },
+  computed: {
+    ...mapState(["user"]),
+    ...mapGetters("userDetails")
+  },
 };
 </script>
