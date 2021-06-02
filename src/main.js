@@ -1,14 +1,14 @@
-import { createApp } from "vue";
+import Vue from "vue";
 import App from "./App.vue";
-import router from "./router";
 import store from "./store";
 import "./assets/tailwind.css";
-// import axios from "axios";
+import "./assets/tailwind.css";
+import router from "./router";
 
-// Vue.prototype.$axios = axios;
+Vue.config.productionTip = false;
 
-const app = createApp(App);
-app.use(store);
-app.use(router);
-app.mount("#app");
-app.config.globalProperties.$store = store;
+new Vue({
+  store,
+  router,
+  render: (h) => h(App),
+}).$mount("#app");
