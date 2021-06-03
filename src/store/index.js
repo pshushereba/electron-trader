@@ -1,7 +1,10 @@
-import { createStore, createLogger } from "vuex";
+import Vue from "vue";
+import Vuex from "vuex";
 import axios from "axios";
 
-const store = createStore({
+Vue.use(Vuex);
+
+export default new Vuex.Store({
   state: {
     status: "",
     token: localStorage.getItem("token") || "",
@@ -11,9 +14,10 @@ const store = createStore({
     auth_request(state) {
       state.status = "loading";
     },
-    auth_success(state, token, user) {
+    auth_success(state, user) {
+      console.log("auth_success fired token", user);
       state.status = "success";
-      state.token = token;
+      state.token = user.token;
       state.user = user;
     },
     auth_error(state) {
@@ -25,29 +29,28 @@ const store = createStore({
     },
   },
   actions: {
-    login({ commit }, user) {
-      return new Promise((resolve, reject) => {
-        commit("auth_request");
-        axios({
-          url: "https://electron-trader.herokuapp.com/api/auth/login",
-          data: user,
-          method: "POST",
+    async login({ commit }, user) {
+      commit("auth_request");
+      await axios({
+        url: "https://electron-trader.herokuapp.com/api/auth/login",
+        data: user,
+        method: "POST",
+      })
+        .then((resp) => {
+          console.log("login response resp.data", resp.data);
+          const token = resp.data.token;
+          const user = resp.data;
+          console.log("user obj", user);
+          localStorage.setItem("token", token);
+          // Add the following line:
+          axios.defaults.headers.common["Authorization"] = token;
+          commit("auth_success", user);
         })
-          .then((resp) => {
-            const token = resp.data.token;
-            const user = resp.data.user;
-            localStorage.setItem("token", token);
-            // Add the following line:
-            axios.defaults.headers.common["Authorization"] = token;
-            commit("auth_success", token, user);
-            resolve(resp);
-          })
-          .catch((err) => {
-            commit("auth_error");
-            localStorage.removeItem("token");
-            reject(err);
-          });
-      });
+        .catch((err) => {
+          commit("auth_error");
+          console.error(err);
+          localStorage.removeItem("token");
+        });
     },
     register({ commit }, user) {
       return new Promise((resolve, reject) => {
@@ -87,8 +90,4 @@ const store = createStore({
     authStatus: (state) => state.status,
     userDetails: (state) => state.user,
   },
-  modules: {},
-  plugins: [createLogger()],
 });
-
-export default store;

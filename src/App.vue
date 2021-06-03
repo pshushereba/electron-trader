@@ -1,12 +1,14 @@
 <template>
-  <nav-bar />
-  <div class="flex">
-    <side-nav v-if="isLoggedIn" />
-    <div class="container">
-      <main class="flex-grow">
-        <Login v-if="!isLoggedIn" />
-        <router-view />
-      </main>
+  <div>
+    <nav-bar />
+    <div class="flex">
+      <side-nav v-if="isLoggedIn" />
+      <div class="container">
+        <main class="flex-grow">
+          <Login v-if="!isLoggedIn" />
+          <router-view />
+        </main>
+      </div>
     </div>
   </div>
 </template>
@@ -16,7 +18,6 @@ import NavBar from "@/components/NavBar";
 import SideNav from "@/components/SideNav";
 import Login from "@/components/auth/Login";
 import { mapGetters } from "vuex";
-
 export default {
   name: "ElectronTrader",
   components: {
