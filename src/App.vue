@@ -1,12 +1,35 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div>
+    <nav-bar />
+    <div class="flex">
+      <side-nav v-if="isLoggedIn" />
+      <div class="container">
+        <main class="flex-grow">
+          <Login v-if="!isLoggedIn" />
+          <router-view />
+        </main>
+      </div>
     </div>
-    <router-view />
   </div>
 </template>
+
+<script>
+import NavBar from "@/components/NavBar";
+import SideNav from "@/components/SideNav";
+import Login from "@/components/auth/Login";
+import { mapGetters } from "vuex";
+export default {
+  name: "ElectronTrader",
+  components: {
+    NavBar,
+    SideNav,
+    Login,
+  },
+  computed: {
+    ...mapGetters(["isLoggedIn"]),
+  },
+};
+</script>
 
 <style>
 #app {
