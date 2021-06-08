@@ -7,7 +7,7 @@
 <script>
 // @ is an alias to /src
 import { mapGetters } from "vuex";
-import { getAlpacaAccount } from "../helpers/alpaca";
+import { getAlpacaAccount, getAlpacaPositions } from "../helpers/alpaca";
 
 export default {
   name: "Home",
@@ -16,6 +16,7 @@ export default {
   },
   mounted() {
     getAlpacaAccount();
+    getAlpacaPositions();
   },
 };
 </script>
