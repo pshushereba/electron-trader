@@ -32,7 +32,7 @@ export const getAlpacaOrderById = (orderId) => {
       console.log(order);
     })
     .catch((err) => console.error(err));
-}
+};
 
 export const getAlpacaPositions = () => {
   return alpaca
@@ -41,25 +41,25 @@ export const getAlpacaPositions = () => {
       console.log(positions)
     })
     .catch((err) => console.error(err));
+};
+
+export const getAlpacaPositionById = (id) => {
+  return alpaca
+    .getPosition(id)
+    .then((position) => {
+      console.log(position)
+    })
+    .catch((err) => console.error(err));
 }
 
-// export const foo = () => {
-//   return alpaca
-//     .bar()
-//     .then((resp) => {
-//       console.log(resp)
-//     })
-//     .catch((err) => console.error(err));
-// }
-
-// export const foo = () => {
-//   return alpaca
-//     .bar()
-//     .then((resp) => {
-//       console.log(resp)
-//     })
-//     .catch((err) => console.error(err));
-// }
+export const closeAllAlpacaPositions = () => {
+  return alpaca
+    .closeAllPositions()
+    .then((resp) => {
+      console.log(resp);
+    })
+    .catch((err) => console.error(err));
+};
 
 // export const foo = () => {
 //   return alpaca

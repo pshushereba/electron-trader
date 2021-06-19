@@ -4,7 +4,7 @@
     <div class="flex container">
       <side-nav v-if="isLoggedIn" />
       <div class="container">
-        <main>
+        <main class="container">
           <Login v-if="!isLoggedIn" />
           <router-view />
         </main>

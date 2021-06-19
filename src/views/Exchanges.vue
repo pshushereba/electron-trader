@@ -1,6 +1,7 @@
 <template>
   <div>
     <p>Exchange Page</p>
+    <p>Test content</p>
   </div>
 </template>
 
